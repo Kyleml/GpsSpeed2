@@ -22,22 +22,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var locationManager: LocationManager
     private lateinit var tvSpeed: TextView
     private lateinit var tvSignal: TextView
-        // 新增：海拔显示控件
-    private lateinit var tvAltitude: TextView
+    private lateinit var tvAltitude: TextView   // 新增：海拔显示
 
     private val locationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
+            // 速度更新
             val speedMs = location.speed
             val speedKmh = speedMs * 3.6f
             tvSpeed.text = String.format(Locale.getDefault(), "%.1f km/h", speedKmh)
-        }
-// 2. 新增：更新海拔
+
+            // 海拔更新
             if (location.hasAltitude()) {
-                val altitudeMeters = location.altitude // 单位是米
+                val altitudeMeters = location.altitude
                 tvAltitude.text = String.format(Locale.getDefault(), "海拔: %.1f m", altitudeMeters)
             } else {
                 tvAltitude.text = "海拔: 不可用"
             }
+        }
+
         override fun onProviderEnabled(provider: String) {
             // 可空实现
         }
@@ -67,8 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         tvSpeed = findViewById(R.id.tvSpeed)
         tvSignal = findViewById(R.id.tvSignal)
-         // 新增：初始化海拔显示控件
-        tvAltitude = findViewById(R.id.tvAltitude)
+        tvAltitude = findViewById(R.id.tvAltitude)   // 初始化海拔控件
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
         if (checkLocationPermission()) {
