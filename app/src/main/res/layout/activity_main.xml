@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="0.0 km/h"
         android:textColor="#FFFFFF"
-        android:textSize="72sp"
+        android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:layout_marginTop="16dp"
         android:text="海拔: -- m"
         android:textColor="#80FFFFFF"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@id/tvSignal"
         app:layout_constraintStart_toStartOf="@id/tvSignal"
         app:layout_constraintTop_toBottomOf="@id/tvSignal" />
